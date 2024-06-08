@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Defines
+# Define
 PARENT_DIR="/var/www/venus/dbsgui"
 LIB_DIR="$PARENT_DIR/lib"
 APP_DIR="$PARENT_DIR/app"
