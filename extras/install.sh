@@ -25,6 +25,7 @@ update-rc.d dbsgui defaults
 /etc/init.d/dbsgui start
 
 #cleanup
-rm /tmp/main.zip
+#rm /tmp/main.zip
+#rm -rf /tmp/dbus-serialbattery-dbsgui-main
 
-echo "dbus-serialbattery-dbusgui installed."
+echo "dbus-serialbattery-dbusgui installed - RESTART YOUR SYSTEM."
