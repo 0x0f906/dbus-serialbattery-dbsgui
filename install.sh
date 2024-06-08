@@ -15,7 +15,7 @@ tar -xf $DEPENDS_DIR/flask.tar.gz -C $DEPENDS_DIR
 rm $DEPENDS_DIR/flask.tar.gz
 
 # Download and unpack the Python app and web interface
-WEB_DIR="$PARENT_DIR/web"
+WEB_DIR="$PARENT_DIR/"
 mkdir -p $WEB_DIR
 APP_URL="https://github.com/0x0f906/dbus-serialbattery-dbsgui/archive/refs/heads/main.zip"
 wget $APP_URL -O $WEB_DIR/app.zip
