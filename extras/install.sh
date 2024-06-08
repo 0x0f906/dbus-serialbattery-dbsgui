@@ -15,7 +15,7 @@ opkg install python3-pip && pip3 install flask
 #get dbus-serialbattery-dbsgui
 WEB_URL="https://github.com/0x0f906/dbus-serialbattery-dbsgui/archive/refs/heads/main.zip"
 wget $WEB_URL -O /tmp/main.zip
-unzip /tmp/main.zip . 
+unzip /tmp/main.zip 
 cp -r /tmp/dbus-serialbattery-dbsgui-main/* $PARENT_DIR 
 
 #init.d
