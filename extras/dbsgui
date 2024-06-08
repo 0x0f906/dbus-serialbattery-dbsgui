@@ -1,0 +1,49 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          dbsgui
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start dbsgui at boot time
+# Description:       Enable service provided by daemon.
+### END INIT INFO
+
+DBSGUI_DIR="/var/www/dbsgui/"
+PIDFILE="/var/run/dbsgui.pid"
+LOGFILE="/var/log/dbsgui.log"
+
+case "$1" in
+  start)
+    echo "Starting dbsgui" | tee -a $LOGFILE
+    start-stop-daemon --start --background --make-pidfile --pidfile $PIDFILE --exec /usr/bin/python3 -- $DBSGUI_DIR/app.py >> $LOGFILE 2>&1
+    ;;
+  stop)
+    echo "Stopping dbsgui" | tee -a $LOGFILE
+    start-stop-daemon --stop --pidfile $PIDFILE
+    rm -f $PIDFILE
+    ;;
+  restart)
+    echo "Restarting dbsgui" | tee -a $LOGFILE
+    $0 stop
+    $0 start
+    ;;
+  status)
+    if [ -e $PIDFILE ]; then
+      PID=$(cat $PIDFILE)
+      if ps -p $PID > /dev/null; then
+        echo "dbsgui is running with PID $PID" | tee -a $LOGFILE
+      else
+	echo "dbsgui is not running, but PID file exists" | tee -a $LOGFILE
+      fi
+    else
+      echo "dbsgui is not running" | tee -a $LOGFILE
+    fi
+    ;;
+  *)
+    echo "Usage: /etc/init.d/dbsgui {start|stop|restart|status}" | tee -a $LOGFILE
+    exit 1
+    ;;
+esac
+
+exit 0

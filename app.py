@@ -2,7 +2,7 @@ from flask import Flask, request, render_template_string
 import configparser
 import os
 
-app = Flask(__name__, static_url_path='/dbsgui/static', static_folder='/var/www/venus/dbsgui/static')
+app = Flask(__name__, static_url_path='/', static_folder='/var/www/dbsgui/static')
 
 CONFIG_FILE = "/data/etc/dbus-serialbattery/config.ini"
 
@@ -11,7 +11,7 @@ def read_config():
     config.read(CONFIG_FILE)
     return config
 
-@app.route('/dbsgui/')
+@app.route('/')
 def index():
     config = read_config()
     max_charge_current = config['DEFAULT'].get('MAX_BATTERY_CHARGE_CURRENT', '')
@@ -20,10 +20,10 @@ def index():
     return render_template_string("""
         <!doctype html>
         <html>
-        <head><title>Config Editor</title></head>
+	<head><title>Config Editor</title></head>
         <body>
             <h1>Config Editor</h1>
-            <form action="/dbsgui/update" method="post">
+            <form action="/update" method="post">
                 <label for="max_charge_current">Max Charge Current:</label>
                 <input type="text" name="max_charge_current" value="{{ max_charge_current }}"><br><br>
 
@@ -44,18 +44,18 @@ def index():
         </html>
     """, max_charge_current=max_charge_current, max_discharge_current=max_discharge_current, logging_level=logging_level)
 
-@app.route('/dbsgui/update', methods=['POST'])
+@app.route('/update', methods=['POST'])
 def update_config():
     config = configparser.ConfigParser()
     config.read(CONFIG_FILE)
-    
+
     config['DEFAULT']['MAX_BATTERY_CHARGE_CURRENT'] = request.form['max_charge_current']
     config['DEFAULT']['MAX_BATTERY_DISCHARGE_CURRENT'] = request.form['max_discharge_current']
     config['DEFAULT']['LOGGING'] = request.form['logging_level']
-    
+
     with open(CONFIG_FILE, 'w') as configfile:
         config.write(configfile)
-    
+
     return "Configuration updated successfully!"
 
 if __name__ == '__main__':
