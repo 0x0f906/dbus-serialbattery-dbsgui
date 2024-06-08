@@ -1,29 +1,29 @@
 #!/bin/bash
 
-# Define the parent directory
+# Defines
 PARENT_DIR="/var/www/venus/dbsgui"
+LIB_DIR="$PARENT_DIR/lib"
+APP_DIR="$PARENT_DIR/app"
 
-# Create the parent directory if it doesn't exist
+# Create directories
 mkdir -p $PARENT_DIR
+mkdir -p $PARENT_DIR/lib
+mkdir -p $PARENT_DIR/app
 
-# Download Flask and place it in the 'depends' subdirectory
-DEPENDS_DIR="$PARENT_DIR/lib"
-mkdir -p $DEPENDS_DIR
+# Download depends
 FLASK_URL="https://github.com/pallets/flask/releases/download/3.0.3/flask-3.0.3.tar.gz"
-wget $FLASK_URL -O $DEPENDS_DIR/flask.tar.gz
-tar -xf $DEPENDS_DIR/flask.tar.gz -C $DEPENDS_DIR
-rm $DEPENDS_DIR/flask.tar.gz
+wget $FLASK_URL -P /tmp
+tar -zxvf /tmp/flask*.tar.gz -C $LIB_DIR
+rm /tmp/flask*.tar.gz
 
-# Download and unpack the Python app and web interface
-WEB_DIR="$PARENT_DIR/"
-mkdir -p $WEB_DIR
-APP_URL="https://github.com/0x0f906/dbus-serialbattery-dbsgui/archive/refs/heads/main.zip"
-wget $APP_URL -O $WEB_DIR/app.zip
-unzip $WEB_DIR/app.zip -d $WEB_DIR
-rm $WEB_DIR/app.zip
+# Download dbus-serialbattery-dbsgui
+WEB_URL="https://github.com/0x0f906/dbus-serialbattery-webgui/archive/refs/heads/main.zip"
+wget $WEB_URL -O /tmp/main.zip
+unzip /tmp/main.zip -d $PARENT_DIR
+rm /tmp/app.zip
 
-# Set permissions
+# Ensure correct permissions
+chmod -R 755 $PARENT_DIR
 chown -R www-data:www-data $PARENT_DIR
 
-# Restart Nginx (assuming you're using systemd)
-systemctl restart nginx
+echo "Installation completed successfully."
