@@ -7,7 +7,7 @@ PARENT_DIR="/var/www/venus/dbsgui"
 mkdir -p $PARENT_DIR
 
 # Download Flask and place it in the 'depends' subdirectory
-DEPENDS_DIR="$PARENT_DIR/depends"
+DEPENDS_DIR="$PARENT_DIR/lib"
 mkdir -p $DEPENDS_DIR
 FLASK_URL="https://github.com/pallets/flask/releases/download/3.0.3/flask-3.0.3.tar.gz"
 wget $FLASK_URL -O $DEPENDS_DIR/flask.tar.gz
