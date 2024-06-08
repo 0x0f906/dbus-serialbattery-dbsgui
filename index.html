@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Config Editor</title>
+</head>
+<body>
+    <h1>Configuration Editor</h1>
+    <form action="/update" method="post">
+        <label for="section">Section:</label>
+        <input type="text" id="section" name="section"><br><br>
+        <label for="option">Option:</label>
+        <input type="text" id="option" name="option"><br><br>
+        <label for="value">Value:</label>
+        <input type="text" id="value" name="value"><br><br>
+        <input type="submit" value="Update">
+    </form>
+    <br>
+    <h2>Current Configuration:</h2>
+    <ul>
+    {% for section in config.sections() %}
+        <li><strong>{{ section }}</strong>
+            <ul>
+            {% for key, value in config.items(section) %}
+                <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
