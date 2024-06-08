@@ -16,11 +16,11 @@ tar -zxvf /tmp/flask*.tar.gz -C $LIB_DIR
 rm /tmp/flask*.tar.gz
 
 # Download dbus-serialbattery-dbsgui
-WEB_URL="https://github.com/0x0f906/dbus-serialbattery-webgui/archive/refs/heads/main.zip"
+WEB_URL="https://github.com/0x0f906/dbus-serialbattery-dbsgui/archive/refs/heads/main.zip"
 wget $WEB_URL -O /tmp/main.zip
 unzip /tmp/main.zip -d /tmp
-mv /tmp/dbus-serialbattery-webgui-main/* $PARENT_DIR
-rm -r /tmp/dbus-serialbattery-webgui-main
+mv /tmp/dbus-serialbattery-dbsgui-main/* $PARENT_DIR
+rm -r /tmp/dbus-serialbattery-dbsgui-main
 rm /tmp/main.zip
 
 # Ensure correct permissions
