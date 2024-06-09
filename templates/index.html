@@ -1,37 +1,88 @@
-<!doctype html>
+k<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Config Editor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .nav-pills .nav-link.active {
+            background-color: #007bff;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="my-4">Config Editor</h1>
-        <form action="/update" method="post">
-            <div class="form-group">
-                <label for="max_charge_current" class="form-label">Max Charge Current:</label>
-                <input type="text" class="form-control" id="max_charge_current" name="max_charge_current" value="{{ max_charge_current }}">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-battery-tab" data-toggle="pill" href="#v-pills-battery" role="tab" aria-controls="v-pills-battery" aria-selected="true">Battery/Critical Setup</a>
+                    <a class="nav-link" id="v-pills-charging-tab" data-toggle="pill" href="#v-pills-charging" role="tab" aria-controls="v-pills-charging" aria-selected="false">Charging</a>
+                    <a class="nav-link" id="v-pills-discharging-tab" data-toggle="pill" href="#v-pills-discharging" role="tab" aria-controls="v-pills-discharging" aria-selected="false">Discharging</a>
+                    <a class="nav-link" id="v-pills-thermal-tab" data-toggle="pill" href="#v-pills-thermal" role="tab" aria-controls="v-pills-thermal" aria-selected="false">Thermal</a>
+                    <a class="nav-link" id="v-pills-bms-tab" data-toggle="pill" href="#v-pills-bms" role="tab" aria-controls="v-pills-bms" aria-selected="false">BMS Setup</a>
+                    <a class="nav-link" id="v-pills-driver-tab" data-toggle="pill" href="#v-pills-driver" role="tab" aria-controls="v-pills-driver" aria-selected="false">Driver Setup</a>
+                    <button id="restart-driver-btn" class="btn btn-danger mt-3">Restart Driver</button>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="max_discharge_current" class="form-label">Max Discharge Current:</label>
-                <input type="text" class="form-control" id="max_discharge_current" name="max_discharge_current" value="{{ max_discharge_current }}">
+            <div class="col-9">
+                <form id="config-form">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        {% include 'config_parts.html' %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
             </div>
-
-            <div class="form-group">
-                <label for="logging_level" class="form-label">Logging Level:</label>
-                <select id="logging_level" name="logging_level" class="form-control">
-                    <option value="ERROR" {% if logging_level == 'ERROR' %} selected {% endif %}>ERROR</option>
-                    <option value="WARNING" {% if logging_level == 'WARNING' %} selected {% endif %}>WARNING</option>
-                    <option value="INFO" {% if logging_level == 'INFO' %} selected {% endif %}>INFO</option>
-                    <option value="DEBUG" {% if logging_level == 'DEBUG' %} selected {% endif %}>DEBUG</option>
-                </select>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Update</button>
-        </form>
+        </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#config-form').on('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                $.ajax({
+                    url: '/update',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Configuration updated successfully!');
+                        } else {
+                            alert('An error occurred while updating the configuration: ' + response.error);
+                        }
+                        console.log(response); // Log success response
+                    },
+                    error: function(xhr, status, error) {
+                        alert('An error occurred while updating the configuration.');
+                        console.log(xhr.responseText); // Log error response
+                    }
+                });
+            });
+
+            $('#restart-driver-btn').on('click', function() {
+                $.ajax({
+                    url: '/restart-driver',
+                    type: 'POST',
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Driver restarted successfully!');
+                        } else {
+                            alert('An error occurred while restarting the driver: ' + response.error);
+                        }
+                        console.log(response); // Log success response
+                    },
+                    error: function(xhr, status, error) {
+                        alert('An error occurred while restarting the driver.');
+                        console.log(xhr.responseText); // Log error response
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
+

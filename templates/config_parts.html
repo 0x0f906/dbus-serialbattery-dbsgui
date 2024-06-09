@@ -1,0 +1,308 @@
+<div class="tab-pane fade show active" id="v-pills-battery" role="tabpanel" aria-labelledby="v-pills-battery-tab">
+    <h3>Battery/Critical Setup</h3>
+    <label for="MAX_BATTERY_CHARGE_CURRENT">Max Battery Charge Current:</label>
+    <input type="text" name="MAX_BATTERY_CHARGE_CURRENT" value="{{ config['DEFAULT'].get('MAX_BATTERY_CHARGE_CURRENT', '') }}"><br><br>
+
+    <label for="MAX_BATTERY_DISCHARGE_CURRENT">Max Battery Discharge Current:</label>
+    <input type="text" name="MAX_BATTERY_DISCHARGE_CURRENT" value="{{ config['DEFAULT'].get('MAX_BATTERY_DISCHARGE_CURRENT', '') }}"><br><br>
+
+    <label for="MIN_CELL_VOLTAGE">Min Cell Voltage:</label>
+    <input type="text" name="MIN_CELL_VOLTAGE" value="{{ config['DEFAULT'].get('MIN_CELL_VOLTAGE', '') }}"><br><br>
+
+    <label for="MAX_CELL_VOLTAGE">Max Cell Voltage:</label>
+    <input type="text" name="MAX_CELL_VOLTAGE" value="{{ config['DEFAULT'].get('MAX_CELL_VOLTAGE', '') }}"><br><br>
+
+    <label for="SOC_RESET_VOLTAGE">SOC Reset Voltage:</label>
+    <input type="text" name="SOC_RESET_VOLTAGE" value="{{ config['DEFAULT'].get('SOC_RESET_VOLTAGE', '') }}"><br><br>
+
+    <label for="SOC_RESET_AFTER_DAYS">SOC Reset After Days:</label>
+    <input type="text" name="SOC_RESET_AFTER_DAYS" value="{{ config['DEFAULT'].get('SOC_RESET_AFTER_DAYS', '') }}"><br><br>
+
+    <label for="BLOCK_ON_DISCONNECT">Block On Disconnect:</label>
+    <select name="BLOCK_ON_DISCONNECT">
+        <option value="True" {% if config['DEFAULT'].get('BLOCK_ON_DISCONNECT', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('BLOCK_ON_DISCONNECT', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="VOLTAGE_DROP">Voltage Drop:</label>
+    <input type="text" name="VOLTAGE_DROP" value="{{ config['DEFAULT'].get('VOLTAGE_DROP', '') }}"><br><br>
+</div>
+
+<div class="tab-pane fade" id="v-pills-charging" role="tabpanel" aria-labelledby="v-pills-charging-tab">
+    <h3>Charging</h3>
+    <label for="FLOAT_CELL_VOLTAGE">Float Cell Voltage:</label>
+    <input type="text" name="FLOAT_CELL_VOLTAGE" value="{{ config['DEFAULT'].get('FLOAT_CELL_VOLTAGE', '') }}"><br><br>
+
+    <label for="LINEAR_LIMITATION_ENABLE">Linear Limitation Enable:</label>
+    <select name="LINEAR_LIMITATION_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('LINEAR_LIMITATION_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('LINEAR_LIMITATION_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="LINEAR_RECALCULATION_EVERY">Linear Recalculation Every:</label>
+    <input type="text" name="LINEAR_RECALCULATION_EVERY" value="{{ config['DEFAULT'].get('LINEAR_RECALCULATION_EVERY', '') }}"><br><br>
+
+    <label for="LINEAR_RECALCULATION_ON_PERC_CHANGE">Linear Recalculation On Perc Change:</label>
+    <input type="text" name="LINEAR_RECALCULATION_ON_PERC_CHANGE" value="{{ config['DEFAULT'].get('LINEAR_RECALCULATION_ON_PERC_CHANGE', '') }}"><br><br>
+
+    <label for="CVCM_ENABLE">CVCM Enable:</label>
+    <select name="CVCM_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('CVCM_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('CVCM_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="CELL_VOLTAGE_DIFF_KEEP_MAX_VOLTAGE_UNTIL">Cell Voltage Diff Keep Max Voltage Until:</label>
+    <input type="text" name="CELL_VOLTAGE_DIFF_KEEP_MAX_VOLTAGE_UNTIL" value="{{ config['DEFAULT'].get('CELL_VOLTAGE_DIFF_KEEP_MAX_VOLTAGE_UNTIL', '') }}"><br><br>
+
+    <label for="CELL_VOLTAGE_DIFF_KEEP_MAX_VOLTAGE_TIME_RESTART">Cell Voltage Diff Keep Max Voltage Time Restart:</label>
+    <input type="text" name="CELL_VOLTAGE_DIFF_KEEP_MAX_VOLTAGE_TIME_RESTART" value="{{ config['DEFAULT'].get('CELL_VOLTAGE_DIFF_KEEP_MAX_VOLTAGE_TIME_RESTART', '') }}"><br><br>
+
+    <label for="CELL_VOLTAGE_DIFF_TO_RESET_VOLTAGE_LIMIT">Cell Voltage Diff To Reset Voltage Limit:</label>
+    <input type="text" name="CELL_VOLTAGE_DIFF_TO_RESET_VOLTAGE_LIMIT" value="{{ config['DEFAULT'].get('CELL_VOLTAGE_DIFF_TO_RESET_VOLTAGE_LIMIT', '') }}"><br><br>
+
+    <label for="MAX_VOLTAGE_TIME_SEC">Max Voltage Time Sec:</label>
+    <input type="text" name="MAX_VOLTAGE_TIME_SEC" value="{{ config['DEFAULT'].get('MAX_VOLTAGE_TIME_SEC', '') }}"><br><br>
+
+    <label for="SOC_LEVEL_TO_RESET_VOLTAGE_LIMIT">SOC Level To Reset Voltage Limit:</label>
+    <input type="text" name="SOC_LEVEL_TO_RESET_VOLTAGE_LIMIT" value="{{ config['DEFAULT'].get('SOC_LEVEL_TO_RESET_VOLTAGE_LIMIT', '') }}"><br><br>
+
+    <label for="CCCM_CV_ENABLE">CCCM CV Enable:</label>
+    <select name="CCCM_CV_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('CCCM_CV_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('CCCM_CV_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="CELL_VOLTAGES_WHILE_CHARGING">Cell Voltages While Charging:</label>
+    <input type="text" name="CELL_VOLTAGES_WHILE_CHARGING" value="{{ config['DEFAULT'].get('CELL_VOLTAGES_WHILE_CHARGING', '') }}"><br><br>
+
+    <label for="MAX_CHARGE_CURRENT_CV_FRACTION">Max Charge Current CV Fraction:</label>
+    <input type="text" name="MAX_CHARGE_CURRENT_CV_FRACTION" value="{{ config['DEFAULT'].get('MAX_CHARGE_CURRENT_CV_FRACTION', '') }}"><br><br>
+
+    <label for="CVL_ICONTROLLER_MODE">CVL IController Mode:</label>
+    <select name="CVL_ICONTROLLER_MODE">
+        <option value="True" {% if config['DEFAULT'].get('CVL_ICONTROLLER_MODE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('CVL_ICONTROLLER_MODE', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="CVL_ICONTROLLER_FACTOR">CVL IController Factor:</label>
+    <input type="text" name="CVL_ICONTROLLER_FACTOR" value="{{ config['DEFAULT'].get('CVL_ICONTROLLER_FACTOR', '') }}"><br><br>
+
+    <label for="CCCM_SOC_ENABLE">CCCM SOC Enable:</label>
+    <select name="CCCM_SOC_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('CCCM_SOC_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('CCCM_SOC_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="SOC_WHILE_CHARGING">SOC While Charging:</label>
+    <input type="text" name="SOC_WHILE_CHARGING" value="{{ config['DEFAULT'].get('SOC_WHILE_CHARGING', '') }}"><br><br>
+
+    <label for="MAX_CHARGE_CURRENT_SOC_FRACTION">Max Charge Current SOC Fraction:</label>
+    <input type="text" name="MAX_CHARGE_CURRENT_SOC_FRACTION" value="{{ config['DEFAULT'].get('MAX_CHARGE_CURRENT_SOC_FRACTION', '') }}"><br><br>
+</div>
+
+<div class="tab-pane fade" id="v-pills-discharging" role="tabpanel" aria-labelledby="v-pills-discharging-tab">
+    <h3>Discharging</h3>
+    <label for="DCCM_CV_ENABLE">DCCM CV Enable:</label>
+    <select name="DCCM_CV_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('DCCM_CV_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('DCCM_CV_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="CELL_VOLTAGES_WHILE_DISCHARGING">Cell Voltages While Discharging:</label>
+    <input type="text" name="CELL_VOLTAGES_WHILE_DISCHARGING" value="{{ config['DEFAULT'].get('CELL_VOLTAGES_WHILE_DISCHARGING', '') }}"><br><br>
+
+    <label for="MAX_DISCHARGE_CURRENT_CV_FRACTION">Max Discharge Current CV Fraction:</label>
+    <input type="text" name="MAX_DISCHARGE_CURRENT_CV_FRACTION" value="{{ config['DEFAULT'].get('MAX_DISCHARGE_CURRENT_CV_FRACTION', '') }}"><br><br>
+
+    <label for="DCCM_SOC_ENABLE">DCCM SOC Enable:</label>
+    <select name="DCCM_SOC_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('DCCM_SOC_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('DCCM_SOC_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="SOC_WHILE_DISCHARGING">SOC While Discharging:</label>
+    <input type="text" name="SOC_WHILE_DISCHARGING" value="{{ config['DEFAULT'].get('SOC_WHILE_DISCHARGING', '') }}"><br><br>
+
+    <label for="MAX_DISCHARGE_CURRENT_SOC_FRACTION">Max Discharge Current SOC Fraction:</label>
+    <input type="text" name="MAX_DISCHARGE_CURRENT_SOC_FRACTION" value="{{ config['DEFAULT'].get('MAX_DISCHARGE_CURRENT_SOC_FRACTION', '') }}"><br><br>
+</div>
+
+<div class="tab-pane fade" id="v-pills-thermal" role="tabpanel" aria-labelledby="v-pills-thermal-tab">
+    <h3>Thermal</h3>
+    <label for="CCCM_T_ENABLE">CCCM T Enable:</label>
+    <select name="CCCM_T_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('CCCM_T_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('CCCM_T_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="DCCM_T_ENABLE">DCCM T Enable:</label>
+    <select name="DCCM_T_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('DCCM_T_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('DCCM_T_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="TEMPERATURES_WHILE_CHARGING">Temperatures While Charging:</label>
+    <input type="text" name="TEMPERATURES_WHILE_CHARGING" value="{{ config['DEFAULT'].get('TEMPERATURES_WHILE_CHARGING', '') }}"><br><br>
+
+    <label for="MAX_CHARGE_CURRENT_T_FRACTION">Max Charge Current T Fraction:</label>
+    <input type="text" name="MAX_CHARGE_CURRENT_T_FRACTION" value="{{ config['DEFAULT'].get('MAX_CHARGE_CURRENT_T_FRACTION', '') }}"><br><br>
+
+    <label for="TEMPERATURES_WHILE_DISCHARGING">Temperatures While Discharging:</label>
+    <input type="text" name="TEMPERATURES_WHILE_DISCHARGING" value="{{ config['DEFAULT'].get('TEMPERATURES_WHILE_DISCHARGING', '') }}"><br><br>
+
+    <label for="MAX_DISCHARGE_CURRENT_T_FRACTION">Max Discharge Current T Fraction:</label>
+    <input type="text" name="MAX_DISCHARGE_CURRENT_T_FRACTION" value="{{ config['DEFAULT'].get('MAX_DISCHARGE_CURRENT_T_FRACTION', '') }}"><br><br>
+
+    <label for="TEMP_BATTERY">Temp Battery:</label>
+    <input type="text" name="TEMP_BATTERY" value="{{ config['DEFAULT'].get('TEMP_BATTERY', '') }}"><br><br>
+
+    <label for="TEMP_1_NAME">Temp 1 Name:</label>
+    <input type="text" name="TEMP_1_NAME" value="{{ config['DEFAULT'].get('TEMP_1_NAME', '') }}"><br><br>
+
+    <label for="TEMP_2_NAME">Temp 2 Name:</label>
+    <input type="text" name="TEMP_2_NAME" value="{{ config['DEFAULT'].get('TEMP_2_NAME', '') }}"><br><br>
+
+    <label for="TEMP_3_NAME">Temp 3 Name:</label>
+    <input type="text" name="TEMP_3_NAME" value="{{ config['DEFAULT'].get('TEMP_3_NAME', '') }}"><br><br>
+
+    <label for="TEMP_4_NAME">Temp 4 Name:</label>
+    <input type="text" name="TEMP_4_NAME" value="{{ config['DEFAULT'].get('TEMP_4_NAME', '') }}"><br><br>
+</div>
+
+<div class="tab-pane fade" id="v-pills-bms" role="tabpanel" aria-labelledby="v-pills-bms-tab">
+    <h3>BMS Setup</h3>
+    <label for="BMS_TYPE">BMS Type:</label>
+    <input type="text" name="BMS_TYPE" value="{{ config['DEFAULT'].get('BMS_TYPE', '') }}"><br><br>
+
+    <label for="BLUETOOTH_BMS">Bluetooth BMS:</label>
+    <input type="text" name="BLUETOOTH_BMS" value="{{ config['DEFAULT'].get('BLUETOOTH_BMS', '') }}"><br><br>
+
+    <label for="CAN_PORT">CAN Port:</label>
+    <input type="text" name="CAN_PORT" value="{{ config['DEFAULT'].get('CAN_PORT', '') }}"><br><br>
+
+    <label for="BLUETOOTH_USE_USB">Bluetooth Use USB:</label>
+    <select name="BLUETOOTH_USE_USB">
+        <option value="True" {% if config['DEFAULT'].get('BLUETOOTH_USE_USB', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('BLUETOOTH_USE_USB', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="EXCLUDED_DEVICES">Excluded Devices:</label>
+    <input type="text" name="EXCLUDED_DEVICES" value="{{ config['DEFAULT'].get('EXCLUDED_DEVICES', '') }}"><br><br>
+
+    <label for="USE_PORT_AS_UNIQUE_ID">Use Port As Unique ID:</label>
+    <select name="USE_PORT_AS_UNIQUE_ID">
+        <option value="True" {% if config['DEFAULT'].get('USE_PORT_AS_UNIQUE_ID', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('USE_PORT_AS_UNIQUE_ID', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="SOC_LOW_WARNING">SOC Low Warning:</label>
+    <input type="text" name="SOC_LOW_WARNING" value="{{ config['DEFAULT'].get('SOC_LOW_WARNING', '') }}"><br><br>
+
+    <label for="SOC_LOW_ALARM">SOC Low Alarm:</label>
+    <input type="text" name="SOC_LOW_ALARM" value="{{ config['DEFAULT'].get('SOC_LOW_ALARM', '') }}"><br><br>
+
+    <label for="BATTERY_CAPACITY">Battery Capacity:</label>
+    <input type="text" name="BATTERY_CAPACITY" value="{{ config['DEFAULT'].get('BATTERY_CAPACITY', '') }}"><br><br>
+
+    <label for="INVERT_CURRENT_MEASUREMENT">Invert Current Measurement:</label>
+    <input type="text" name="INVERT_CURRENT_MEASUREMENT" value="{{ config['DEFAULT'].get('INVERT_CURRENT_MEASUREMENT', '') }}"><br><br>
+
+    <label for="JKBMS_CAN_CELL_COUNT">JKBMS CAN Cell Count:</label>
+    <input type="text" name="JKBMS_CAN_CELL_COUNT" value="{{ config['DEFAULT'].get('JKBMS_CAN_CELL_COUNT', '') }}"><br><br>
+
+    <label for="GREENMETER_ADDRESS">GreenMeter Address:</label>
+    <input type="text" name="GREENMETER_ADDRESS" value="{{ config['DEFAULT'].get('GREENMETER_ADDRESS', '') }}"><br><br>
+
+    <label for="LIPRO_START_ADDRESS">Lipro Start Address:</label>
+    <input type="text" name="LIPRO_START_ADDRESS" value="{{ config['DEFAULT'].get('LIPRO_START_ADDRESS', '') }}"><br><br>
+
+    <label for="LIPRO_END_ADDRESS">Lipro End Address:</label>
+    <input type="text" name="LIPRO_END_ADDRESS" value="{{ config['DEFAULT'].get('LIPRO_END_ADDRESS', '') }}"><br><br>
+
+    <label for="LIPRO_CELL_COUNT">Lipro Cell Count:</label>
+    <input type="text" name="LIPRO_CELL_COUNT" value="{{ config['DEFAULT'].get('LIPRO_CELL_COUNT', '') }}"><br><br>
+
+    <label for="HELTEC_MODBUS_ADDR">Heltec Modbus Address:</label>
+    <input type="text" name="HELTEC_MODBUS_ADDR" value="{{ config['DEFAULT'].get('HELTEC_MODBUS_ADDR', '') }}"><br><br>
+
+    <label for="SEPLOS_USE_BMS_VALUES">Seplos Use BMS Values:</label>
+    <select name="SEPLOS_USE_BMS_VALUES">
+        <option value="True" {% if config['DEFAULT'].get('SEPLOS_USE_BMS_VALUES', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('SEPLOS_USE_BMS_VALUES', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+</div>
+
+<div class="tab-pane fade" id="v-pills-driver" role="tabpanel" aria-labelledby="v-pills-driver-tab">
+    <h3>Driver Setup</h3>
+    <label for="LOGGING">Logging:</label>
+    <input type="text" name="LOGGING" value="{{ config['DEFAULT'].get('LOGGING', '') }}"><br><br>
+
+    <label for="EXTERNAL_CURRENT_SENSOR_DBUS_DEVICE">External Current Sensor DBus Device:</label>
+    <input type="text" name="EXTERNAL_CURRENT_SENSOR_DBUS_DEVICE" value="{{ config['DEFAULT'].get('EXTERNAL_CURRENT_SENSOR_DBUS_DEVICE', '') }}"><br><br>
+
+    <label for="EXTERNAL_CURRENT_SENSOR_DBUS_PATH">External Current Sensor DBus Path:</label>
+    <input type="text" name="EXTERNAL_CURRENT_SENSOR_DBUS_PATH" value="{{ config['DEFAULT'].get('EXTERNAL_CURRENT_SENSOR_DBUS_PATH', '') }}"><br><br>
+
+    <label for="SOC_CALCULATION">SOC Calculation:</label>
+    <select name="SOC_CALCULATION">
+        <option value="True" {% if config['DEFAULT'].get('SOC_CALCULATION', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('SOC_CALCULATION', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="SOC_RESET_CURRENT">SOC Reset Current:</label>
+    <input type="text" name="SOC_RESET_CURRENT" value="{{ config['DEFAULT'].get('SOC_RESET_CURRENT', '') }}"><br><br>
+
+    <label for="SOC_RESET_TIME">SOC Reset Time:</label>
+    <input type="text" name="SOC_RESET_TIME" value="{{ config['DEFAULT'].get('SOC_RESET_TIME', '') }}"><br><br>
+
+    <label for="SOC_CALC_CURRENT_REPORTED_BY_BMS">SOC Calc Current Reported By BMS:</label>
+    <input type="text" name="SOC_CALC_CURRENT_REPORTED_BY_BMS" value="{{ config['DEFAULT'].get('SOC_CALC_CURRENT_REPORTED_BY_BMS', '') }}"><br><br>
+
+    <label for="SOC_CALC_CURRENT_MEASURED_BY_USER">SOC Calc Current Measured By User:</label>
+    <input type="text" name="SOC_CALC_CURRENT_MEASURED_BY_USER" value="{{ config['DEFAULT'].get('SOC_CALC_CURRENT_MEASURED_BY_USER', '') }}"><br><br>
+
+    <label for="TIME_TO_GO_ENABLE">Time To Go Enable:</label>
+    <select name="TIME_TO_GO_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('TIME_TO_GO_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('TIME_TO_GO_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="TIME_TO_SOC_POINTS">Time To SOC Points:</label>
+    <input type="text" name="TIME_TO_SOC_POINTS" value="{{ config['DEFAULT'].get('TIME_TO_SOC_POINTS', '') }}"><br><br>
+
+    <label for="TIME_TO_SOC_VALUE_TYPE">Time To SOC Value Type:</label>
+    <input type="text" name="TIME_TO_SOC_VALUE_TYPE" value="{{ config['DEFAULT'].get('TIME_TO_SOC_VALUE_TYPE', '') }}"><br><br>
+
+    <label for="TIME_TO_SOC_RECALCULATE_EVERY">Time To SOC Recalculate Every:</label>
+    <input type="text" name="TIME_TO_SOC_RECALCULATE_EVERY" value="{{ config['DEFAULT'].get('TIME_TO_SOC_RECALCULATE_EVERY', '') }}"><br><br>
+
+    <label for="TIME_TO_SOC_INC_FROM">Time To SOC Inc From:</label>
+    <select name="TIME_TO_SOC_INC_FROM">
+        <option value="True" {% if config['DEFAULT'].get('TIME_TO_SOC_INC_FROM', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('TIME_TO_SOC_INC_FROM', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="POLL_INTERVAL">Poll Interval:</label>
+    <input type="text" name="POLL_INTERVAL" value="{{ config['DEFAULT'].get('POLL_INTERVAL', '') }}"><br><br>
+
+    <label for="AUTO_RESET_SOC">Auto Reset SOC:</label>
+    <select name="AUTO_RESET_SOC">
+        <option value="True" {% if config['DEFAULT'].get('AUTO_RESET_SOC', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('AUTO_RESET_SOC', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="PUBLISH_CONFIG_VALUES">Publish Config Values:</label>
+    <select name="PUBLISH_CONFIG_VALUES">
+        <option value="True" {% if config['DEFAULT'].get('PUBLISH_CONFIG_VALUES', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('PUBLISH_CONFIG_VALUES', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+
+    <label for="BATTERY_CELL_DATA_FORMAT">Battery Cell Data Format:</label>
+    <input type="text" name="BATTERY_CELL_DATA_FORMAT" value="{{ config['DEFAULT'].get('BATTERY_CELL_DATA_FORMAT', '') }}"><br><br>
+
+    <label for="MIDPOINT_ENABLE">Midpoint Enable:</label>
+    <select name="MIDPOINT_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('MIDPOINT_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('MIDPOINT_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select><br><br>
+</div>
