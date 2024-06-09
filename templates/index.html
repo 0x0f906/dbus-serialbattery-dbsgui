@@ -10,6 +10,21 @@
         .nav-pills .nav-link.active {
             background-color: #007bff;
         }
+        .form-group-inline {
+            display: flex;
+            align-items: center;
+        }
+        .form-group-inline label {
+            margin-right: 10px;
+        }
+        .fraction-pair {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .fraction-pair input {
+            width: 45%;
+        }
     </style>
 </head>
 <body>
@@ -17,21 +32,38 @@
         <div class="row">
             <div class="col-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-battery-tab" data-toggle="pill" href="#v-pills-battery" role="tab" aria-controls="v-pills-battery" aria-selected="true">Battery/Critical Setup</a>
-                    <a class="nav-link" id="v-pills-charging-tab" data-toggle="pill" href="#v-pills-charging" role="tab" aria-controls="v-pills-charging" aria-selected="false">Charging</a>
-                    <a class="nav-link" id="v-pills-discharging-tab" data-toggle="pill" href="#v-pills-discharging" role="tab" aria-controls="v-pills-discharging" aria-selected="false">Discharging</a>
+                    <a class="nav-link active" id="v-pills-battery-tab" data-toggle="pill" href="#v-pills-battery" role="tab" aria-controls="v-pills-battery" aria-selected="true">Battery</a>
+                    <a class="nav-link" id="v-pills-charge-tab" data-toggle="pill" href="#v-pills-charge" role="tab" aria-controls="v-pills-charge" aria-selected="false">Charge</a>
+                    <a class="nav-link" id="v-pills-discharge-tab" data-toggle="pill" href="#v-pills-discharge" role="tab" aria-controls="v-pills-discharge" aria-selected="false">Discharge</a>
                     <a class="nav-link" id="v-pills-thermal-tab" data-toggle="pill" href="#v-pills-thermal" role="tab" aria-controls="v-pills-thermal" aria-selected="false">Thermal</a>
-                    <a class="nav-link" id="v-pills-bms-tab" data-toggle="pill" href="#v-pills-bms" role="tab" aria-controls="v-pills-bms" aria-selected="false">BMS Setup</a>
-                    <a class="nav-link" id="v-pills-driver-tab" data-toggle="pill" href="#v-pills-driver" role="tab" aria-controls="v-pills-driver" aria-selected="false">Driver Setup</a>
+                    <a class="nav-link" id="v-pills-bms-tab" data-toggle="pill" href="#v-pills-bms" role="tab" aria-controls="v-pills-bms" aria-selected="false">BMS</a>
+                    <a class="nav-link" id="v-pills-driver-tab" data-toggle="pill" href="#v-pills-driver" role="tab" aria-controls="v-pills-driver" aria-selected="false">DBS Driver</a>
                     <button id="restart-driver-btn" class="btn btn-danger mt-3">Restart Driver</button>
+                    <button id="save-config-btn" class="btn btn-primary mt-3">Save Config</button>
                 </div>
             </div>
             <div class="col-9">
                 <form id="config-form">
                     <div class="tab-content" id="v-pills-tabContent">
-                        {% include 'config_parts.html' %}
+                        <div class="tab-pane fade show active" id="v-pills-battery" role="tabpanel" aria-labelledby="v-pills-battery-tab">
+                            {% include 'battery_config.html' %}
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-charge" role="tabpanel" aria-labelledby="v-pills-charge-tab">
+                            {% include 'charge_config.html' %}
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-discharge" role="tabpanel" aria-labelledby="v-pills-discharge-tab">
+                            {% include 'discharge_config.html' %}
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-thermal" role="tabpanel" aria-labelledby="v-pills-thermal-tab">
+                            {% include 'thermal_config.html' %}
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-bms" role="tabpanel" aria-labelledby="v-pills-bms-tab">
+                            {% include 'bms_config.html' %}
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-driver" role="tabpanel" aria-labelledby="v-pills-driver-tab">
+                            {% include 'driver_config.html' %}
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
         </div>
@@ -41,6 +73,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
+            $('#save-config-btn').on('click', function() {
+                $('#config-form').submit();
+            });
+
             $('#config-form').on('submit', function(event) {
                 event.preventDefault(); // Prevent the default form submission
 
@@ -49,11 +85,7 @@
                     type: 'POST',
                     data: $(this).serialize(),
                     success: function(response) {
-                        if (response.success) {
-                            alert('Configuration updated successfully!');
-                        } else {
-                            alert('An error occurred while updating the configuration: ' + response.error);
-                        }
+                        alert('Configuration updated successfully!');
                         console.log(response); // Log success response
                     },
                     error: function(xhr, status, error) {
@@ -64,25 +96,22 @@
             });
 
             $('#restart-driver-btn').on('click', function() {
-                $.ajax({
-                    url: '/restart-driver',
-                    type: 'POST',
-                    success: function(response) {
-                        if (response.success) {
+                if (confirm('Are you sure you want to restart the driver?')) {
+                    $.ajax({
+                        url: '/restart-driver',
+                        type: 'POST',
+                        success: function(response) {
                             alert('Driver restarted successfully!');
-                        } else {
-                            alert('An error occurred while restarting the driver: ' + response.error);
+                            console.log(response); // Log success response
+                        },
+                        error: function(xhr, status, error) {
+                            alert('An error occurred while restarting the driver.');
+                            console.log(xhr.responseText); // Log error response
                         }
-                        console.log(response); // Log success response
-                    },
-                    error: function(xhr, status, error) {
-                        alert('An error occurred while restarting the driver.');
-                        console.log(xhr.responseText); // Log error response
-                    }
-                });
+                    });
+                }
             });
         });
     </script>
 </body>
 </html>
-

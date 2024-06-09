@@ -1,0 +1,99 @@
+<div class="form-group">
+    <label for="LINEAR_LIMITATION_ENABLE">Linear Limitation Enable</label>
+    <select class="form-control" id="LINEAR_LIMITATION_ENABLE" name="LINEAR_LIMITATION_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('LINEAR_LIMITATION_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('LINEAR_LIMITATION_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="LINEAR_RECALCULATION_EVERY">Linear Recalculation Every</label>
+    <input type="text" class="form-control" id="LINEAR_RECALCULATION_EVERY" name="LINEAR_RECALCULATION_EVERY" value="{{ config['DEFAULT'].get('LINEAR_RECALCULATION_EVERY', '60') }}">
+</div>
+
+<div class="form-group">
+    <label for="LINEAR_RECALCULATION_ON_PERC_CHANGE">Linear Recalculation on Percentage Change</label>
+    <input type="text" class="form-control" id="LINEAR_RECALCULATION_ON_PERC_CHANGE" name="LINEAR_RECALCULATION_ON_PERC_CHANGE" value="{{ config['DEFAULT'].get('LINEAR_RECALCULATION_ON_PERC_CHANGE', '33') }}">
+</div>
+
+<div class="form-group">
+    <label for="CVCM_ENABLE">CVCM Enable</label>
+    <select class="form-control" id="CVCM_ENABLE" name="CVCM_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('CVCM_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('CVCM_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="CELL_VOLTAGE_DIFF_KEEP_MAX_VOLTAGE_UNTIL">Cell Voltage Diff Keep Max Voltage Until</label>
+    <input type="text" class="form-control" id="CELL_VOLTAGE_DIFF_KEEP_MAX_VOLTAGE_UNTIL" name="CELL_VOLTAGE_DIFF_KEEP_MAX_VOLTAGE_UNTIL" value="{{ config['DEFAULT'].get('CELL_VOLTAGE_DIFF_KEEP_MAX_VOLTAGE_UNTIL', '0.010') }}">
+</div>
+
+<div class="form-group">
+    <label for="CELL_VOLTAGE_DIFF_KEEP_MAX_VOLTAGE_TIME_RESTART">Cell Voltage Diff Keep Max Voltage Time Restart</label>
+    <input type="text" class="form-control" id="CELL_VOLTAGE_DIFF_KEEP_MAX_VOLTAGE_TIME_RESTART" name="CELL_VOLTAGE_DIFF_KEEP_MAX_VOLTAGE_TIME_RESTART" value="{{ config['DEFAULT'].get('CELL_VOLTAGE_DIFF_KEEP_MAX_VOLTAGE_TIME_RESTART', '0.013') }}">
+</div>
+
+<div class="form-group">
+    <label for="CELL_VOLTAGE_DIFF_TO_RESET_VOLTAGE_LIMIT">Cell Voltage Diff to Reset Voltage Limit</label>
+    <input type="text" class="form-control" id="CELL_VOLTAGE_DIFF_TO_RESET_VOLTAGE_LIMIT" name="CELL_VOLTAGE_DIFF_TO_RESET_VOLTAGE_LIMIT" value="{{ config['DEFAULT'].get('CELL_VOLTAGE_DIFF_TO_RESET_VOLTAGE_LIMIT', '0.080') }}">
+</div>
+
+<div class="form-group">
+    <label for="MAX_VOLTAGE_TIME_SEC">Max Voltage Time (seconds)</label>
+    <input type="text" class="form-control" id="MAX_VOLTAGE_TIME_SEC" name="MAX_VOLTAGE_TIME_SEC" value="{{ config['DEFAULT'].get('MAX_VOLTAGE_TIME_SEC', '900') }}">
+</div>
+
+<div class="form-group">
+    <label for="SOC_LEVEL_TO_RESET_VOLTAGE_LIMIT">SOC Level to Reset Voltage Limit</label>
+    <input type="text" class="form-control" id="SOC_LEVEL_TO_RESET_VOLTAGE_LIMIT" name="SOC_LEVEL_TO_RESET_VOLTAGE_LIMIT" value="{{ config['DEFAULT'].get('SOC_LEVEL_TO_RESET_VOLTAGE_LIMIT', '80') }}">
+</div>
+
+<div class="form-group">
+    <label for="CCCM_CV_ENABLE">CCCM CV Enable</label>
+    <select class="form-control" id="CCCM_CV_ENABLE" name="CCCM_CV_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('CCCM_CV_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('CCCM_CV_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="CELL_VOLTAGES_WHILE_CHARGING">Cell Voltages While Charging</label>
+    <input type="text" class="form-control" id="CELL_VOLTAGES_WHILE_CHARGING" name="CELL_VOLTAGES_WHILE_CHARGING" value="{{ config['DEFAULT'].get('CELL_VOLTAGES_WHILE_CHARGING', '3.55, 3.50, 3.45, 3.30') }}">
+</div>
+
+<div class="form-group">
+    <label for="MAX_CHARGE_CURRENT_CV_FRACTION">Max Charge Current CV Fraction</label>
+    <input type="text" class="form-control" id="MAX_CHARGE_CURRENT_CV_FRACTION" name="MAX_CHARGE_CURRENT_CV_FRACTION" value="{{ config['DEFAULT'].get('MAX_CHARGE_CURRENT_CV_FRACTION', '0, 0.05, 0.5, 1') }}">
+</div>
+
+<div class="form-group">
+    <label for="CVL_ICONTROLLER_MODE">CVL Icontroller Mode</label>
+    <select class="form-control" id="CVL_ICONTROLLER_MODE" name="CVL_ICONTROLLER_MODE">
+        <option value="True" {% if config['DEFAULT'].get('CVL_ICONTROLLER_MODE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('CVL_ICONTROLLER_MODE', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="CVL_ICONTROLLER_FACTOR">CVL Icontroller Factor</label>
+    <input type="text" class="form-control" id="CVL_ICONTROLLER_FACTOR" name="CVL_ICONTROLLER_FACTOR" value="{{ config['DEFAULT'].get('CVL_ICONTROLLER_FACTOR', '0.2') }}">
+</div>
+
+<div class="form-group">
+    <label for="CCCM_SOC_ENABLE">CCCM SOC Enable</label>
+    <select class="form-control" id="CCCM_SOC_ENABLE" name="CCCM_SOC_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('CCCM_SOC_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('CCCM_SOC_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="SOC_WHILE_CHARGING">SOC While Charging</label>
+    <input type="text" class="form-control" id="SOC_WHILE_CHARGING" name="SOC_WHILE_CHARGING" value="{{ config['DEFAULT'].get('SOC_WHILE_CHARGING', '98, 95, 90, 85') }}">
+</div>
+
+<div class="form-group">
+    <label for="MAX_CHARGE_CURRENT_SOC_FRACTION">Max Charge Current SOC Fraction</label>
+    <input type="text" class="form-control" id="MAX_CHARGE_CURRENT_SOC_FRACTION" name="MAX_CHARGE_CURRENT_SOC_FRACTION" value="{{ config['DEFAULT'].get('MAX_CHARGE_CURRENT_SOC_FRACTION', '0.10, 0.20, 0.50, 1.00') }}">
+</div>

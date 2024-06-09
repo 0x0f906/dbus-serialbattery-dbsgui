@@ -1,0 +1,154 @@
+<div class="form-group">
+    <label for="LOGGING">Logging Level</label>
+    <select class="form-control" id="LOGGING" name="LOGGING">
+        <option value="ERROR" {% if config['DEFAULT'].get('LOGGING', '') == 'ERROR' %} selected {% endif %}>ERROR</option>
+        <option value="WARNING" {% if config['DEFAULT'].get('LOGGING', '') == 'WARNING' %} selected {% endif %}>WARNING</option>
+        <option value="INFO" {% if config['DEFAULT'].get('LOGGING', '') == 'INFO' %} selected {% endif %}>INFO</option>
+        <option value="DEBUG" {% if config['DEFAULT'].get('LOGGING', '') == 'DEBUG' %} selected {% endif %}>DEBUG</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="BLOCK_ON_DISCONNECT">Block on Disconnect</label>
+    <select class="form-control" id="BLOCK_ON_DISCONNECT" name="BLOCK_ON_DISCONNECT">
+        <option value="True" {% if config['DEFAULT'].get('BLOCK_ON_DISCONNECT', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('BLOCK_ON_DISCONNECT', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="EXTERNAL_CURRENT_SENSOR_DBUS_DEVICE">External Current Sensor D-Bus Device</label>
+    <input type="text" class="form-control" id="EXTERNAL_CURRENT_SENSOR_DBUS_DEVICE" name="EXTERNAL_CURRENT_SENSOR_DBUS_DEVICE" value="{{ config['DEFAULT'].get('EXTERNAL_CURRENT_SENSOR_DBUS_DEVICE', '') }}">
+</div>
+
+<div class="form-group">
+    <label for="EXTERNAL_CURRENT_SENSOR_DBUS_PATH">External Current Sensor D-Bus Path</label>
+    <input type="text" class="form-control" id="EXTERNAL_CURRENT_SENSOR_DBUS_PATH" name="EXTERNAL_CURRENT_SENSOR_DBUS_PATH" value="{{ config['DEFAULT'].get('EXTERNAL_CURRENT_SENSOR_DBUS_PATH', '') }}">
+</div>
+
+<div class="form-group">
+    <label for="AUTO_RESET_SOC">Auto Reset SoC</label>
+    <select class="form-control" id="AUTO_RESET_SOC" name="AUTO_RESET_SOC">
+        <option value="True" {% if config['DEFAULT'].get('AUTO_RESET_SOC', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('AUTO_RESET_SOC', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="SOC_LOW_WARNING">SoC Low Warning</label>
+    <input type="text" class="form-control" id="SOC_LOW_WARNING" name="SOC_LOW_WARNING" value="{{ config['DEFAULT'].get('SOC_LOW_WARNING', '') }}">
+</div>
+
+<div class="form-group">
+    <label for="SOC_LOW_ALARM">SoC Low Alarm</label>
+    <input type="text" class="form-control" id="SOC_LOW_ALARM" name="SOC_LOW_ALARM" value="{{ config['DEFAULT'].get('SOC_LOW_ALARM', '') }}">
+</div>
+
+<div class="form-group">
+    <label for="SOC_RESET_VOLTAGE">SoC Reset Voltage</label>
+    <input type="text" class="form-control" id="SOC_RESET_VOLTAGE" name="SOC_RESET_VOLTAGE" value="{{ config['DEFAULT'].get('SOC_RESET_VOLTAGE', '') }}">
+</div>
+
+<div class="form-group">
+    <label for="SOC_RESET_AFTER_DAYS">SoC Reset After Days</label>
+    <input type="text" class="form-control" id="SOC_RESET_AFTER_DAYS" name="SOC_RESET_AFTER_DAYS" value="{{ config['DEFAULT'].get('SOC_RESET_AFTER_DAYS', '') }}">
+</div>
+
+<div class="form-group">
+    <label for="SOC_CALCULATION">SoC Calculation</label>
+    <select class="form-control" id="SOC_CALCULATION" name="SOC_CALCULATION">
+        <option value="True" {% if config['DEFAULT'].get('SOC_CALCULATION', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('SOC_CALCULATION', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="SOC_RESET_CURRENT">SoC Reset Current</label>
+    <input type="text" class="form-control" id="SOC_RESET_CURRENT" name="SOC_RESET_CURRENT" value="{{ config['DEFAULT'].get('SOC_RESET_CURRENT', '') }}">
+</div>
+
+<div class="form-group">
+    <label for="SOC_RESET_TIME">SoC Reset Time</label>
+    <input type="text" class="form-control" id="SOC_RESET_TIME" name="SOC_RESET_TIME" value="{{ config['DEFAULT'].get('SOC_RESET_TIME', '') }}">
+</div>
+
+<div class="form-group">
+    <label for="SOC_CALC_CURRENT_REPORTED_BY_BMS">SoC Calc Current Reported by BMS</label>
+    <input type="text" class="form-control" id="SOC_CALC_CURRENT_REPORTED_BY_BMS" name="SOC_CALC_CURRENT_REPORTED_BY_BMS" value="{{ config['DEFAULT'].get('SOC_CALC_CURRENT_REPORTED_BY_BMS', '') }}">
+</div>
+
+<div class="form-group">
+    <label for="SOC_CALC_CURRENT_MEASURED_BY_USER">SoC Calc Current Measured by User</label>
+    <input type="text" class="form-control" id="SOC_CALC_CURRENT_MEASURED_BY_USER" name="SOC_CALC_CURRENT_MEASURED_BY_USER" value="{{ config['DEFAULT'].get('SOC_CALC_CURRENT_MEASURED_BY_USER', '') }}">
+</div>
+
+<div class="form-group">
+    <label for="TIME_TO_GO_ENABLE">Time To Go Enable</label>
+    <select class="form-control" id="TIME_TO_GO_ENABLE" name="TIME_TO_GO_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('TIME_TO_GO_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('TIME_TO_GO_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="TIME_TO_SOC_POINTS">Time To SoC Points</label>
+    <input type="text" class="form-control" id="TIME_TO_SOC_POINTS" name="TIME_TO_SOC_POINTS" value="{{ config['DEFAULT'].get('TIME_TO_SOC_POINTS', '') }}">
+</div>
+
+<div class="form-group">
+    <label for="TIME_TO_SOC_VALUE_TYPE">Time To SoC Value Type</label>
+    <select class="form-control" id="TIME_TO_SOC_VALUE_TYPE" name="TIME_TO_SOC_VALUE_TYPE">
+        <option value="1" {% if config['DEFAULT'].get('TIME_TO_SOC_VALUE_TYPE', '') == '1' %} selected {% endif %}>1</option>
+        <option value="2" {% if config['DEFAULT'].get('TIME_TO_SOC_VALUE_TYPE', '') == '2' %} selected {% endif %}>2</option>
+        <option value="3" {% if config['DEFAULT'].get('TIME_TO_SOC_VALUE_TYPE', '') == '3' %} selected {% endif %}>3</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="TIME_TO_SOC_RECALCULATE_EVERY">Time To SoC Recalculate Every</label>
+    <input type="text" class="form-control" id="TIME_TO_SOC_RECALCULATE_EVERY" name="TIME_TO_SOC_RECALCULATE_EVERY" value="{{ config['DEFAULT'].get('TIME_TO_SOC_RECALCULATE_EVERY', '') }}">
+</div>
+
+<div class="form-group">
+    <label for="TIME_TO_SOC_INC_FROM">Time To SoC Inc From</label>
+    <select class="form-control" id="TIME_TO_SOC_INC_FROM" name="TIME_TO_SOC_INC_FROM">
+        <option value="True" {% if config['DEFAULT'].get('TIME_TO_SOC_INC_FROM', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('TIME_TO_SOC_INC_FROM', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="POLL_INTERVAL">Poll Interval</label>
+    <input type="text" class="form-control" id="POLL_INTERVAL" name="POLL_INTERVAL" value="{{ config['DEFAULT'].get('POLL_INTERVAL', '') }}">
+</div>
+
+<div class="form-group">
+    <label for="PUBLISH_CONFIG_VALUES">Publish Config Values</label>
+    <select class="form-control" id="PUBLISH_CONFIG_VALUES" name="PUBLISH_CONFIG_VALUES">
+        <option value="True" {% if config['DEFAULT'].get('PUBLISH_CONFIG_VALUES', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('PUBLISH_CONFIG_VALUES', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="BATTERY_CELL_DATA_FORMAT">Battery Cell Data Format</label>
+    <select class="form-control" id="BATTERY_CELL_DATA_FORMAT" name="BATTERY_CELL_DATA_FORMAT">
+        <option value="1" {% if config['DEFAULT'].get('BATTERY_CELL_DATA_FORMAT', '') == '1' %} selected {% endif %}>
+            1 - Format: /Voltages/Cell (also available for display on Remote Console)
+        </option>
+        <option value="2" {% if config['DEFAULT'].get('BATTERY_CELL_DATA_FORMAT', '') == '2' %} selected {% endif %}>
+            2 - Format: /Cell/#/Volts
+        </option>
+        <option value="3" {% if config['DEFAULT'].get('BATTERY_CELL_DATA_FORMAT', '') == '3' %} selected {% endif %}>
+            3 - Both formats 1 and 2
+        </option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="MIDPOINT_ENABLE">Midpoint Enable</label>
+    <select class="form-control" id="MIDPOINT_ENABLE" name="MIDPOINT_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('MIDPOINT_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('MIDPOINT_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>

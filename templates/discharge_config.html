@@ -1,0 +1,35 @@
+<div class="form-group">
+    <label for="DCCM_CV_ENABLE">DCCM CV Enable</label>
+    <select class="form-control" id="DCCM_CV_ENABLE" name="DCCM_CV_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('DCCM_CV_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('DCCM_CV_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="CELL_VOLTAGES_WHILE_DISCHARGING">Cell Voltages While Discharging</label>
+    <input type="text" class="form-control" id="CELL_VOLTAGES_WHILE_DISCHARGING" name="CELL_VOLTAGES_WHILE_DISCHARGING" value="{{ config['DEFAULT'].get('CELL_VOLTAGES_WHILE_DISCHARGING', '2.70, 2.80, 2.90, 3.10') }}">
+</div>
+
+<div class="form-group">
+    <label for="MAX_DISCHARGE_CURRENT_CV_FRACTION">Max Discharge Current CV Fraction</label>
+    <input type="text" class="form-control" id="MAX_DISCHARGE_CURRENT_CV_FRACTION" name="MAX_DISCHARGE_CURRENT_CV_FRACTION" value="{{ config['DEFAULT'].get('MAX_DISCHARGE_CURRENT_CV_FRACTION', '0, 0.1, 0.5, 1') }}">
+</div>
+
+<div class="form-group">
+    <label for="DCCM_SOC_ENABLE">DCCM SOC Enable</label>
+    <select class="form-control" id="DCCM_SOC_ENABLE" name="DCCM_SOC_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('DCCM_SOC_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('DCCM_SOC_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="SOC_WHILE_DISCHARGING">SOC While Discharging</label>
+    <input type="text" class="form-control" id="SOC_WHILE_DISCHARGING" name="SOC_WHILE_DISCHARGING" value="{{ config['DEFAULT'].get('SOC_WHILE_DISCHARGING', '5, 10, 15, 20') }}">
+</div>
+
+<div class="form-group">
+    <label for="MAX_DISCHARGE_CURRENT_SOC_FRACTION">Max Discharge Current SOC Fraction</label>
+    <input type="text" class="form-control" id="MAX_DISCHARGE_CURRENT_SOC_FRACTION" name="MAX_DISCHARGE_CURRENT_SOC_FRACTION" value="{{ config['DEFAULT'].get('MAX_DISCHARGE_CURRENT_SOC_FRACTION', '0.10, 0.20, 0.50, 1.00') }}">
+</div>

@@ -26,16 +26,30 @@ def index():
 @app.route('/update', methods=['POST'])
 def update_config():
     try:
-        config = read_config()
+        with open(CONFIG_FILE, 'r') as file:
+            lines = file.readlines()
 
-        for key in request.form:
-            # Ensure key is added to config if it doesn't exist
-            config['DEFAULT'][key] = request.form[key] if request.form[key] else ""
+        config_dict = {key: request.form[key] for key in request.form}
 
-        with open(CONFIG_FILE, 'w') as configfile:
-            config.write(configfile, space_around_delimiters=False)
-        
-        # Restore original file permissions and attributes
+        new_lines = []
+        for line in lines:
+            if '=' in line:
+                key = line.split('=')[0].strip()
+                if key in config_dict:
+                    value = config_dict[key]
+                    new_lines.append(f"{key} = {value}\n")
+                    del config_dict[key]
+                else:
+                    new_lines.append(line)
+            else:
+                new_lines.append(line)
+
+        for key, value in config_dict.items():
+            new_lines.append(f"{key} = {value}\n")
+
+        with open(CONFIG_FILE, 'w') as file:
+            file.writelines(new_lines)
+
         os.chmod(CONFIG_FILE, 0o777)
         os.system(f"setfattr -n user.simple-upnpd -v 127 {CONFIG_FILE}")
 
@@ -55,4 +69,3 @@ def restart_driver():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-

@@ -1,0 +1,20 @@
+    <div class="form-group">
+        <label for="MAX_BATTERY_CHARGE_CURRENT">Max Battery Charge Current</label>
+        <input type="text" class="form-control" id="MAX_BATTERY_CHARGE_CURRENT" name="MAX_BATTERY_CHARGE_CURRENT" value="{{ config['DEFAULT'].get('MAX_BATTERY_CHARGE_CURRENT', '') }}">
+    </div>
+    <div class="form-group">
+        <label for="MAX_BATTERY_DISCHARGE_CURRENT">Max Battery Discharge Current</label>
+        <input type="text" class="form-control" id="MAX_BATTERY_DISCHARGE_CURRENT" name="MAX_BATTERY_DISCHARGE_CURRENT" value="{{ config['DEFAULT'].get('MAX_BATTERY_DISCHARGE_CURRENT', '') }}">
+    </div>
+    <div class="form-group">
+        <label for="MIN_CELL_VOLTAGE">Min Cell Voltage</label>
+        <input type="text" class="form-control" id="MIN_CELL_VOLTAGE" name="MIN_CELL_VOLTAGE" value="{{ config['DEFAULT'].get('MIN_CELL_VOLTAGE', '') }}">
+    </div>
+    <div class="form-group">
+        <label for="MAX_CELL_VOLTAGE">Max Cell Voltage</label>
+        <input type="text" class="form-control" id="MAX_CELL_VOLTAGE" name="MAX_CELL_VOLTAGE" value="{{ config['DEFAULT'].get('MAX_CELL_VOLTAGE', '') }}">
+    </div>
+    <div class="form-group">
+        <label for="FLOAT_CELL_VOLTAGE">Float Cell Voltage</label>
+        <input type="text" class="form-control" id="FLOAT_CELL_VOLTAGE" name="FLOAT_CELL_VOLTAGE" value="{{ config['DEFAULT'].get('FLOAT_CELL_VOLTAGE', '') }}">
+    </div>

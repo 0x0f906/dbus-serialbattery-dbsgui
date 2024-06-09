@@ -1,0 +1,67 @@
+<div class="form-group">
+    <label for="CCCM_T_ENABLE">CCCM Temperature Enable</label>
+    <select class="form-control" id="CCCM_T_ENABLE" name="CCCM_T_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('CCCM_T_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('CCCM_T_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="DCCM_T_ENABLE">DCCM Temperature Enable</label>
+    <select class="form-control" id="DCCM_T_ENABLE" name="DCCM_T_ENABLE">
+        <option value="True" {% if config['DEFAULT'].get('DCCM_T_ENABLE', '') == 'True' %} selected {% endif %}>True</option>
+        <option value="False" {% if config['DEFAULT'].get('DCCM_T_ENABLE', '') == 'False' %} selected {% endif %}>False</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="TEMPERATURES_WHILE_CHARGING">Temperatures While Charging</label>
+    <input type="text" class="form-control" id="TEMPERATURES_WHILE_CHARGING" name="TEMPERATURES_WHILE_CHARGING" value="{{ config['DEFAULT'].get('TEMPERATURES_WHILE_CHARGING', '0, 2, 5, 10, 15, 20, 35, 40, 55') }}">
+</div>
+
+<div class="form-group">
+    <label for="MAX_CHARGE_CURRENT_T_FRACTION">Max Charge Current T Fraction</label>
+    <input type="text" class="form-control" id="MAX_CHARGE_CURRENT_T_FRACTION" name="MAX_CHARGE_CURRENT_T_FRACTION" value="{{ config['DEFAULT'].get('MAX_CHARGE_CURRENT_T_FRACTION', '0.00, 0.10, 0.20, 0.40, 0.80, 1.00, 1.00, 0.40, 0.00') }}">
+</div>
+
+<div class="form-group">
+    <label for="TEMPERATURES_WHILE_DISCHARGING">Temperatures While Discharging</label>
+    <input type="text" class="form-control" id="TEMPERATURES_WHILE_DISCHARGING" name="TEMPERATURES_WHILE_DISCHARGING" value="{{ config['DEFAULT'].get('TEMPERATURES_WHILE_DISCHARGING', '-20, 0, 5, 10, 15, 45, 55') }}">
+</div>
+
+<div class="form-group">
+    <label for="MAX_DISCHARGE_CURRENT_T_FRACTION">Max Discharge Current T Fraction</label>
+    <input type="text" class="form-control" id="MAX_DISCHARGE_CURRENT_T_FRACTION" name="MAX_DISCHARGE_CURRENT_T_FRACTION" value="{{ config['DEFAULT'].get('MAX_DISCHARGE_CURRENT_T_FRACTION', '0.00, 0.20, 0.30, 0.40, 1.00, 1.00, 0.00') }}">
+</div>
+
+
+<div class="form-group">
+    <label for="TEMP_BATTERY">Temperature Battery</label>
+    <select class="form-control" id="TEMP_BATTERY" name="TEMP_BATTERY">
+        <option value="0" {% if config['DEFAULT'].get('TEMP_BATTERY', '') == '0' %} selected {% endif %}>0 - Get mean of temperature sensor 1 to sensor 4</option>
+        <option value="1" {% if config['DEFAULT'].get('TEMP_BATTERY', '') == '1' %} selected {% endif %}>1 - Get only temperature from temperature sensor 1</option>
+        <option value="2" {% if config['DEFAULT'].get('TEMP_BATTERY', '') == '2' %} selected {% endif %}>2 - Get only temperature from temperature sensor 2</option>
+        <option value="3" {% if config['DEFAULT'].get('TEMP_BATTERY', '') == '3' %} selected {% endif %}>3 - Get only temperature from temperature sensor 3</option>
+        <option value="4" {% if config['DEFAULT'].get('TEMP_BATTERY', '') == '4' %} selected {% endif %}>4 - Get only temperature from temperature sensor 4</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="TEMP_1_NAME">Temperature Sensor 1 Name</label>
+    <input type="text" class="form-control" id="TEMP_1_NAME" name="TEMP_1_NAME" value="{{ config['DEFAULT'].get('TEMP_1_NAME', 'Temp 1') }}">
+</div>
+
+<div class="form-group">
+    <label for="TEMP_2_NAME">Temperature Sensor 2 Name</label>
+    <input type="text" class="form-control" id="TEMP_2_NAME" name="TEMP_2_NAME" value="{{ config['DEFAULT'].get('TEMP_2_NAME', 'Temp 2') }}">
+</div>
+
+<div class="form-group">
+    <label for="TEMP_3_NAME">Temperature Sensor 3 Name</label>
+    <input type="text" class="form-control" id="TEMP_3_NAME" name="TEMP_3_NAME" value="{{ config['DEFAULT'].get('TEMP_3_NAME', 'Temp 3') }}">
+</div>
+
+<div class="form-group">
+    <label for="TEMP_4_NAME">Temperature Sensor 4 Name</label>
+    <input type="text" class="form-control" id="TEMP_4_NAME" name="TEMP_4_NAME" value="{{ config['DEFAULT'].get('TEMP_4_NAME', 'Temp 4') }}">
+</div>

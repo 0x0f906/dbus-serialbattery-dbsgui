@@ -10,7 +10,7 @@ chown -R www-data:www-data $PARENT_DIR
 
 
 #install dependencies
-opkg install python3-pip && pip3 install flask
+opkg install python3-pip && pip3 install flask configparser configobj
 
 #get dbus-serialbattery-dbsgui
 WEB_URL="https://github.com/0x0f906/dbus-serialbattery-dbsgui/archive/refs/heads/main.zip"
